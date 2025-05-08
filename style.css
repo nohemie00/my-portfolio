@@ -855,9 +855,9 @@ ul.project-nav {
 
 /* About 섹션 스타일 */
 .about-section {
+    padding: 50px 4rem;
     max-width: 800px;
     margin: 80px auto 0;
-    padding: 20px;
 }
 
 .about-section h2 {
@@ -915,9 +915,9 @@ ul.project-nav {
 
 /* Skills 섹션 스타일 */
 .skills-section {
+    padding: 50px 4rem;
     max-width: 800px;
     margin: 80px auto 0;
-    padding: 20px;
 }
 
 .skills-section h2 {
@@ -974,9 +974,9 @@ ul.project-nav {
 
 /* Contact 섹션 스타일 */
 .contact-section {
+    padding: 50px 4rem;
     max-width: 800px;
     margin: 80px auto 0;
-    padding: 20px;
     text-align: center;
 }
 
