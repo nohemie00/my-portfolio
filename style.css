@@ -151,16 +151,16 @@ body {
 .top-menu {
     position: fixed;
     top: 0;
-    left: 500px;
+    left: 400px;  /* 기존 200px에서 수정됨 */
     right: 0;
     background-color: #B0725D;
     backdrop-filter: blur(5px);
-    padding: 1rem 4rem;
+    padding: 2rem 4rem;
     z-index: 100;
     height: 60px;
     display: flex;
     align-items: center;
-}
+  }
 
 .top-menu ul {
     list-style: none;
@@ -1167,3 +1167,13 @@ ul.project-nav {
     display: block;
 }
   
+section,
+article,
+.project-info,
+.main-section,
+.projects-container,
+hr {
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
