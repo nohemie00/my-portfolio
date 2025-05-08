@@ -203,8 +203,10 @@ body {
 /* 메인 콘텐츠 영역 */
 .content {
     margin-left: 400px;
-    padding: 20px;
+    padding: 0;
     width: calc(100% - 400px);
+    position: relative;
+    min-height: 100vh;
 }
 
 /* 프로젝트 설명 영역 */
@@ -855,9 +857,9 @@ ul.project-nav {
 
 /* About 섹션 스타일 */
 .about-section {
-    padding: 50px 4rem;
     max-width: 800px;
-    margin: 80px auto 0;
+    margin: 60px auto 0;
+    padding: 20px;
 }
 
 .about-section h2 {
@@ -915,9 +917,9 @@ ul.project-nav {
 
 /* Skills 섹션 스타일 */
 .skills-section {
-    padding: 50px 4rem;
     max-width: 800px;
-    margin: 80px auto 0;
+    margin: 60px auto 0;
+    padding: 20px;
 }
 
 .skills-section h2 {
@@ -974,9 +976,9 @@ ul.project-nav {
 
 /* Contact 섹션 스타일 */
 .contact-section {
-    padding: 50px 4rem;
     max-width: 800px;
-    margin: 80px auto 0;
+    margin: 60px auto 0;
+    padding: 20px;
     text-align: center;
 }
 
@@ -1115,8 +1117,21 @@ ul.project-nav {
 
 /* 프로젝트 컨테이너 스타일 */
 .projects-container {
-    margin-top: 60px;
-    padding-top: 20px;
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    right: 0;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: none;
+}
+
+.projects-container.visible {
+    opacity: 1;
+    visibility: visible;
+    display: block;
 }
 
 /* 기본 섹션 스타일 */
@@ -1124,12 +1139,19 @@ ul.project-nav {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    position: relative;
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    right: 0;
+    min-height: calc(100vh - 60px);
+    padding: 20px;
+    display: none;
 }
 
 .main-section.visible {
     opacity: 1;
     visibility: visible;
+    display: block;
 }
 
 /* description 전환 효과 */
