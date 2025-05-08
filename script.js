@@ -246,13 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 초기 상태: 프로젝트 섹션 표시
-    showProjectsSection();
-    
-    // 첫 번째 프로젝트 표시
-    const firstLink = document.querySelector('.project-nav a');
-    if (firstLink) {
-        const firstId = firstLink.getAttribute('href').substring(1);
-        showDescription(firstId);
-    }
+    // 초기 상태: About me 섹션 표시
+    showSection('about');
 });
