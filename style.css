@@ -25,7 +25,7 @@ body {
     position: fixed;
     height: 100vh;
     background-color: #B0725D;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: none !important;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -57,7 +57,7 @@ body {
     gap: 1.5rem;
     margin-bottom: 3rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e6d5a7;
+    border-bottom: none !important;
 }
 
 .main-menu a {
@@ -1175,5 +1175,45 @@ article,
 hr {
   border: none !important;
   border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
   box-shadow: none !important;
+  outline: none !important;
+}
+
+/* 모든 흰색 선 제거를 위한 추가 스타일 */
+section,
+article,
+.project-info,
+.main-section,
+.projects-container,
+hr,
+.container,
+.side-nav,
+.top-menu,
+.content,
+.about-section,
+.skills-section,
+.contact-section,
+.skill-item,
+.contact-info,
+footer {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* 특별히 side-nav의 border 제거 */
+.side-nav {
+  border-right: none !important;
+}
+
+/* main-menu의 border 제거 */
+.main-menu {
+  border-bottom: none !important;
 }
