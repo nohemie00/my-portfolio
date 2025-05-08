@@ -204,24 +204,32 @@ function hideAllSections() {
     document.querySelectorAll('.fade-section').forEach(section => {
         section.classList.remove('visible');
     });
+    // 프로젝트 컨테이너도 숨김
+    const projectsContainer = document.querySelector('.projects-container');
+    if (projectsContainer) {
+        projectsContainer.classList.remove('visible');
+    }
 }
 
 // 특정 섹션 표시
 function showSection(sectionId) {
     hideAllSections();
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.classList.add('visible');
+    if (sectionId === 'projects') {
+        const projectsContainer = document.querySelector('.projects-container');
+        if (projectsContainer) {
+            projectsContainer.classList.add('visible');
+        }
+    } else {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.classList.add('visible');
+        }
     }
 }
 
 // 프로젝트 섹션 표시
 function showProjectsSection() {
-    hideAllSections();
-    const projectsContainer = document.querySelector('.projects-container');
-    if (projectsContainer) {
-        projectsContainer.classList.add('visible');
-    }
+    showSection('projects');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -231,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
-            showProjectsSection();
+            showSection('projects');
             showDescription(targetId);
         });
     });
