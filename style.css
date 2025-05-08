@@ -151,7 +151,7 @@ body {
 .top-menu {
     position: fixed;
     top: 0;
-    left: 200px;
+    left: 500px;
     right: 0;
     background-color: #B0725D;
     backdrop-filter: blur(5px);
@@ -276,7 +276,6 @@ h3 {
 article {
     margin-bottom: 4rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid #e6d5a7;
 }
 
 /* 스크롤 동작 */
