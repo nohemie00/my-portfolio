@@ -372,7 +372,7 @@ li strong {
 /* About Me 섹션 */
 #about p {
     font-size: 1.1rem;
-    color: #444;
+    color: #666;
     max-width: 800px;
 }
 
@@ -389,14 +389,12 @@ li strong {
 }
 
 /* 컨택트 섹션 */
-#contact {
-    margin-top: 6rem;
+#contact p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
 }
 
-#contact p {
-    color: #666;
-    margin-bottom: 0.5rem;
-}
 
 /* 푸터 */
 footer {
