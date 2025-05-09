@@ -375,8 +375,8 @@ li strong {
 
 /* About Me 섹션 */
 #about p {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 0.8rem;
+    color: #888;
     max-width: 800px;
 }
 
@@ -396,7 +396,7 @@ li strong {
 #contact p {
     font-size: 1.1rem;
     color: #666;
-    max-width: 800px;
+    max-width: 600px;
 }
 
 
