@@ -748,7 +748,7 @@ img, .content-box {
 /* 회사명 스타일 */
 .company-name {
     font-size: 1rem;
-    color: #FFFFFF;
+    color: #ebf5b2;
     font-weight: 500;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
@@ -767,6 +767,7 @@ img, .content-box {
 /* 연락처 링크 */
 .contact-links a {
     color: #FFFFFF;
+    margin-top: 2.5rem;
 }
 
 /* 푸터 */
@@ -776,7 +777,7 @@ footer p {
 
 /* bullet point 색상 */
 .project-nav li:not(.company-name):not(.sub-category)::before {
-    color: #FFFFFF;
+    color: #878686;
 }
 
 /* 섹션 타이틀(대분류) 스타일 */
@@ -808,7 +809,7 @@ footer p {
     content: "•";
     position: absolute;
     left: 0.7rem;
-    color: #FFFFFF;
+    color: #878686;
 }
 
 /* 대분류 bullet point 제거 */
@@ -1017,7 +1018,7 @@ ul.project-nav {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    font-size: 0.72rem;  /* 80% 크기 유지 */
+    font-size: 0.9rem;  /* 80% 크기 유지 */
     color: #FFFFFF;
 }
 
