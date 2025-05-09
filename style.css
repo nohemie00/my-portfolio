@@ -170,6 +170,10 @@ body {
     align-items: center;
 }
 
+.top-menu li {
+    list-style: none;
+}
+
 .top-menu a {
     color: #FFFFFF;
     text-decoration: none;
@@ -753,6 +757,7 @@ img, .content-box {
 /* 네비게이션 링크 색상 */
 .project-nav a {
     color: #FFFFFF;
+    text-decoration: none;
 }
 
 .project-nav a:hover {
@@ -1088,7 +1093,7 @@ ul.project-nav {
 
 /* 비디오 영역 스타일 */
 .video-wrapper {
-    max-width: 600px;
+    max-width: 500px;
     margin: 20px auto 0;
 }
 
