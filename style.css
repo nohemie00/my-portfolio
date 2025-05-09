@@ -63,7 +63,7 @@ body {
 .main-menu a {
     color: #333;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* ✅ 글자 크기 더 작게 */
     font-weight: 400;
     transition: all 0.3s ease;
     position: relative;
@@ -78,10 +78,10 @@ body {
     content: '';
     position: absolute;
     width: 0;
-    height: 1px;
+    height: 0; /* ✅ 밑줄 제거 */
     bottom: -3px;
     left: 0;
-    background-color: #333;
+    background-color: transparent; /* ✅ 보이지 않게 */
     transition: width 0.3s ease;
 }
 
