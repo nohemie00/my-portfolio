@@ -155,7 +155,7 @@ body {
     right: 0;
     background-color: #B0725D;
     backdrop-filter: blur(5px);
-    padding: 2rem 4rem;
+    padding: 3rem 4rem;
     z-index: 100;
     height: 60px;
     display: flex;
@@ -214,7 +214,7 @@ body {
     display: none;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 80px;
+    padding-top: 60px;
     text-align: center;
 }
 
