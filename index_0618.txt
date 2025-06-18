@@ -31,11 +31,11 @@
           <span class="year">2025</span>
         </li>
         <li>
-          <a href="#ai-agent">AI 에이전트</a>
+          <a href="#ai-app">ChatBot</a>
           <span class="year">2025</span>
         </li>
         <li>
-          <a href="#ai-app">ChatBot</a>
+          <a href="#ai-agent">AI 에이전트</a>
           <span class="year">2025</span>
         </li>
         <li>
@@ -43,14 +43,13 @@
           <span class="year">2025</span>
         </li>
         <li>
-          <a href="#ai-chatbot">Web/App 개발_1</a>
+          <a href="#ai-app1">Web/App 개발_1</a>
           <span class="year">2025</span>
         </li>
         <li>
-          <a href="#ai-chatbot">Web/App 개발_2</a>
+          <a href="#ai-app2">Web/App 개발_2</a>
           <span class="year">2025</span>
         </li>
-
 
         <li class="company-name">Career Projects</li>
         
@@ -137,7 +136,6 @@
           <a href="#ai-cardnews">카드뉴스</a>
           <span class="year">2025</span>
         </li>
-  
       </ul>
 
       <!-- 연락처 및 소셜 링크 -->
@@ -164,6 +162,93 @@
       <!-- 프로젝트 설명 영역 -->
       <div class="projects-container fade-section">
         <div class="project-description">
+          <!-- AI WORKS - 마케팅 전략 -->
+          <div class="description" id="desc-ai-marketing">
+            <h2>AI 툴을 이용한 클래식 공연 마케팅 전략 수립</h2>
+            <p class="main-desc">
+              <a href="https://funny-antlion-6e3.notion.site/Classic-Concert-1cab9684995e80d39dc7ca1dadbd25ff?pvs=4" 
+                 target="_blank" 
+                 style="color: #FFFFFF; text-decoration: underline;">
+                프로젝트 상세보기
+              </a>
+            </p>
+            <div class="image-wrapper">
+              <img src="assets/images/projects/마케팅.png" alt="AI 마케팅 전략">
+            </div>
+          </div>
+
+          <!-- AI WORKS - APP 개발 (ChatBot) -->
+          <div id="desc-ai-app" class="description">
+            <div class="content-box">
+              <h2>커스터마이징 챗봇 개발</h2>
+              <p class="main-desc">빨강머리 앤의 감성과 대화 스타일로 대화해주는 마케팅 목적의 챗봇 구현. GPT 및 Supabase를 연동하여 Flutter WebView 방식으로 앱 배포</p>
+              <div class="image-wrapper">
+                <img src="assets/images/projects/annebot.png" alt="빨강머리 앤 챗봇">
+              </div>
+              <div class="project-links">
+                <a href="https://anne-chatbot.streamlit.app/" target="_blank" class="project-link">앤 셜리와 이야기를 나눠보세요</a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- AI WORKS - AI 에이전트 -->
+          <div id="desc-ai-agent" class="description">
+            <div class="content-box">
+              <h2>RAG 시스템 기반 LangChain 에이전트 개발</h2>
+              <p class="main-desc">Upstage 로더 사용, 재귀적 분할, 고급 임베딩으로 지식베이스 생성한 뒤, Supabase DB와 연동해 지식 기반 응답을 수행하고 Streamlit을 통해 사용자 UI를 제공함.</p>
+              <div class="image-wrapper">
+                <img src="assets/images/projects/Curator_fr_app.png" alt="AI Agent Application">
+              </div>
+              <div class="project-links">
+                <a href="https://curator-ai-french-edition.streamlit.app/" target="_blank" class="project-link">프랑스에 대한 모든 것</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI WORKS - 홈페이지 제작 -->
+          <div id="desc-ai-web" class="description">
+            <div class="content-box">
+              <h2>커스터마이징 홈페이지 제작</h2>
+              <p class="main-desc">Cursor AI를 이용하여 작업 내용을 공간적으로 시각화</p>
+              <div class="image-wrapper">
+                <img src="assets/images/projects/front_ma_chambre.png" alt="커스터마이징 홈페이지">
+              </div>
+            </div>
+          </div>
+
+          <!-- AI WORKS - WEP/APP 개발_1 -->
+          <div id="desc-ai-app1" class="description">
+            <div class="content-box">
+              <h2>영화 자동 제작 Web/App 개발</h2>
+              <p class="main-desc">Reflit 사용. 키워드 및 장르 입력하면 json to video 방식으로 영화 생성</p>
+              <div style="text-align:center; margin-bottom: 20px;">
+                <a href="https://movie-magic-maker-noy.replit.app/" target="_blank" rel="noopener noreferrer">
+                  <button class="project-link-btn">Cine AI</button>
+                </a>
+              </div>
+              <div class="image-wrapper">
+                <img src="assets/images/projects/CineAI.png" alt="ai영화제작웹앱">
+              </div>
+            </div>
+          </div>
+
+          <!-- AI WORKS - WEP/APP 개발_2 -->
+          <div id="desc-ai-app2" class="description">
+            <div class="content-box">
+              <h2>프롬프트 마켓 Web/App 개발</h2>
+              <p class="main-desc">Reflit 사용. 업무 및 개인에게 필요한 모든 종류의 프롬프트 모음집</p>
+              <div style="text-align:center; margin-bottom: 20px;">
+                <a href="https://noy-prompt-gallery-app.replit.app/" target="_blank" rel="noopener noreferrer">
+                  <button class="project-link-btn">Prompt Marketplace</button>
+                </a>
+              </div>
+              <div class="image-wrapper">
+                <img src="assets/images/projects/prompt_market.png" alt="ai프롬프트마켓웹앱">
+              </div>
+            </div>
+          </div>
+
           <div class="description" id="desc-kyobo-semo">
             <h2>신규 브랜드 론칭</h2>
             <p class="main-desc">세상의 모든 것을 배우는 가장 즐거운 방법 세모가방 출시 (기여도 40%)</p>
@@ -290,21 +375,6 @@
             </div>
           </div>
 
-          <!-- AI WORKS - 마케팅 전략 -->
-          <div class="description" id="desc-ai-marketing">
-            <h2>AI 툴을 이용한 클래식 공연 마케팅 전략 수립</h2>
-            <p class="main-desc">
-              <a href="https://funny-antlion-6e3.notion.site/Classic-Concert-1cab9684995e80d39dc7ca1dadbd25ff?pvs=4" 
-                 target="_blank" 
-                 style="color: #FFFFFF; text-decoration: underline;">
-                프로젝트 상세보기
-              </a>
-            </p>
-            <div class="image-wrapper">
-              <img src="assets/images/projects/마케팅.png" alt="AI 마케팅 전략">
-            </div>
-          </div>
-
           <!-- AI 창작 - 영상 -->
           <div class="description" id="desc-ai-video">
             <h2>AI 영상 제작</h2>
@@ -371,49 +441,8 @@
               <img src="assets/images/projects/영상_2.png" alt="AI 영화">
             </div>
           </div>
-
-          <!-- AI WORKS - AI 에이전트 -->
-          <div id="desc-ai-agent" class="description">
-            <div class="content-box">
-              <h2>RAG 시스템 기반 LangChain 에이전트 개발</h2>
-              <p class="main-desc">Upstage 로더 사용, 재귀적 분할, 고급 임베딩으로 지식베이스 생성한 뒤, Supabase DB와 연동해 지식 기반 응답을 수행하고 Streamlit을 통해 사용자 UI를 제공함.</p>
-              <div class="image-wrapper">
-                <img src="assets/images/projects/Curator_fr_app.png" alt="AI Agent Application">
-              </div>
-              <div class="project-links">
-                <a href="https://curator-ai-french-edition.streamlit.app/" target="_blank" class="project-link">프랑스에 대한 모든 것</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- AI WORKS - APP 개발 -->
-          <div id="desc-ai-app" class="description">
-            <div class="content-box">
-              <h2>빨강머리 앤 커스터마이징 챗봇 개발</h2>
-              <p class="main-desc">빨강머리 앤의 감성과 대화 스타일로 대화해주는 마케팅 목적의 챗봇 구현. GPT 및 Supabase를 연동하여 Flutter WebView 방식으로 앱 배포</p>
-              <div class="image-wrapper">
-                <img src="assets/images/projects/annebot.png" alt="빨강머리 앤 챗봇">
-              </div>
-              <div class="project-links">
-                <a href="https://anne-chatbot.streamlit.app/" target="_blank" class="project-link">앤 셜리와 이야기를 나눠보세요</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- AI WORKS - 홈페이지 제작 -->
-          <div id="desc-ai-web" class="description">
-            <div class="content-box">
-              <h2>커스터마이징 홈페이지 제작</h2>
-              <p class="main-desc">Cursor AI를 이용하여 작업 내용을 공간적으로 시각화</p>
-              <div class="image-wrapper">
-                <img src="assets/images/projects/front_ma_chambre.png" alt="커스터마이징 홈페이지">
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-
-
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
