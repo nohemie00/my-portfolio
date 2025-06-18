@@ -1138,23 +1138,35 @@ ul.project-nav {
     display: block;
 }
 
-/* 기본 섹션 스타일 */
+/* main-section(about, education, skills, contact) 좌우는 가운데, 세로(top)는 고정 */
 .main-section {
-    position: static !important;
-    left: unset !important;
-    right: unset !important;
-    top: unset !important;
-    margin: 60px auto 0 !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 60px !important;
+    margin: 0 !important;
     display: block !important;
     max-width: 800px;
     width: 100%;
     padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    min-height: calc(100vh - 60px);
 }
 
 .main-section.visible {
     opacity: 1;
     visibility: visible;
-    display: block;
+}
+
+@media (max-width: 900px) {
+    .main-section {
+        top: 20px !important;
+        padding: 10px;
+        max-width: 98vw;
+        width: 100vw;
+    }
 }
 
 /* description 전환 효과 */
