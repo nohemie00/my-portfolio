@@ -1145,18 +1145,18 @@ ul.project-nav {
 .main-section.education-section,
 .main-section.skills-section,
 .main-section.contact-section {
-    position: relative !important;
-    margin-left: 500px !important;                  /* 사이드바 너비만큼 밀기 */
-    width: calc(100% - 500px) !important;           /* 사이드바 제외한 전체 너비 */
-    max-width: 600px;
-    top: 60px !important;
-    padding: 20px;
-    box-sizing: border-box;
-    display: block !important;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    min-height: calc(100vh - 60px);
+  position: absolute !important;
+  top: 60px !important;
+  left: 500px !important; /* 사이드 네비게이션 이후 위치 시작 */
+  width: calc(100% - 500px) !important;
+  max-width: 700px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: block !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  min-height: calc(100vh - 60px);
 }
 
 
