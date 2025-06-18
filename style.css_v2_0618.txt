@@ -1,0 +1,1328 @@
+/* 기본 스타일 리셋 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 전체 페이지 스타일링 */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.8;
+    color: #FFFFFF;
+    background-color: #B0725D;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 왼쪽 네비게이션 */
+.side-nav {
+    width: 400px;
+    padding: 3rem 2.5rem;
+    position: fixed;
+    height: 100vh;
+    background-color: #B0725D;
+    border-right: none !important;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 200;
+}
+
+/* 프로필 섹션 */
+.profile-section {
+    margin-bottom: 2rem;
+}
+
+.profile-section h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF;
+}
+
+.profile-section .title {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
+/* 메인 메뉴 스타일링 */
+.main-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: none !important;
+}
+
+.main-menu a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.8rem; /* ✅ 글자 크기 더 작게 */
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.main-menu a:hover {
+    color: #000;
+}
+
+/* 호버 시 밑줄 효과 */
+.main-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0; /* ✅ 밑줄 제거 */
+    bottom: -3px;
+    left: 0;
+    background-color: transparent; /* ✅ 보이지 않게 */
+    transition: width 0.3s ease;
+}
+
+.main-menu a:hover::after {
+    width: 100%;
+}
+
+/* 프로젝트 네비게이션 전체 스타일 */
+.project-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 대분류 스타일 (company-name, sub-category) */
+.company-name, .sub-category {
+    list-style: none;
+    font-size: 1.8rem;
+    color: #f6caca;
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+/* sub-category 특별 스타일 */
+.sub-category {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+/* 소분류 항목 스타일 */
+.project-nav li:not(.company-name):not(.sub-category) {
+    list-style: none;
+    font-size: 0.9rem;
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+    position: relative;
+}
+
+/* 소분류 항목에만 bullet point 적용 */
+.project-nav li:not(.company-name):not(.sub-category)::before {
+    content: "•";
+    position: absolute;
+    left: 1rem;
+    color: #fbfad9;
+}
+
+/* 대분류 bullet point 명시적 제거 */
+.company-name::before,
+.sub-category::before {
+    display: none;
+}
+
+/* 연도 표시 스타일 */
+.year {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: rgba(252, 240, 199, 0.7);
+    font-weight: 300;
+}
+
+/* 상단 메뉴 스타일 복원 및 수정 */
+.top-menu {
+    position: fixed;
+    top: 0;
+    left: 400px;  /* 기존 200px에서 수정됨 */
+    right: 0;
+    background-color: #B0725D;
+    backdrop-filter: blur(5px);
+    padding: 3rem 4rem;
+    z-index: 100;
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+
+.top-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.top-menu li {
+    list-style: none;
+}
+
+.top-menu a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.top-menu a:hover {
+    color: #000;
+}
+
+/* 호버 시 밑줄 효과 */
+.top-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    transition: width 0.3s ease;
+}
+
+.top-menu a:hover::after {
+    width: 100%;
+}
+
+/* 메인 콘텐츠 영역 */
+.content {
+    margin-left: 200px;
+    padding: 0;
+    width: calc(100% - 200px);
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 프로젝트 설명 영역 */
+.description {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 60px;
+    text-align: center;
+}
+
+.description.active {
+    display: block;
+}
+
+/* 텍스트 스타일 */
+.description h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #fff9e1;
+}
+
+.description .main-desc {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #FFFFFF;
+}
+
+.description .sub-desc {
+    font-size: 0.8rem;
+    color: rgba(230, 248, 223, 0.8);
+    margin-bottom: 20px;
+}
+
+/* 이미지 영역 */
+.image-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 섹션 스타일링 */
+  section {
+    margin-bottom: 6rem;
+    max-width: 800px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+article {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+}
+
+/* 스크롤 동작 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 65px;  /* 30px와 100px의 중간값 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1200px) {
+    .top-menu {
+        padding: 1.5rem 2rem;
+    }
+    
+    .top-menu ul {
+        gap: 2rem;
+    }
+    
+    .content-sections {
+    padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-menu {
+        left: 0;
+        padding: 1rem;
+    }
+    
+    .top-menu ul {
+        gap: 1.5rem;
+    }
+    
+    .top-menu a {
+        font-size: 0.9rem;
+    }
+}
+
+/* 스크롤 스타일링 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff5d4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e6d5a7;
+    border-radius: 4px;
+}
+
+/* 헤더 스타일링 */
+header {
+    margin-bottom: 6rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* 프로젝트 리스트 스타일링 */
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #666;
+}
+
+li strong {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* About Me 섹션 */
+#about p {
+    font-size: 0.9rem;
+    color: #ebd9d9;
+    max-width: 800px;
+}
+
+/* Personal Projects 섹션 */
+#Personal-Projects p {
+    white-space: pre-line;
+    color: #444;
+}
+
+/* Skills 섹션 */
+#skills p {
+    white-space: pre-line;
+    color: #444;
+}
+
+/* 컨택트 섹션 */
+#contact p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+}
+
+
+/* 푸터 */
+footer {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* 호버 효과 */
+li:hover {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* 스크롤바 스타일링 */
+.side-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.side-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.side-nav::-webkit-scrollbar-thumb {
+    background: #e6d5a7;
+    border-radius: 2px;
+}
+
+/* 호버 효과가 있는 링크 스타일링 */
+.side-nav a,
+.top-menu a {
+    cursor: pointer;
+}
+
+/* 프로젝트 정보 스타일 수정 */
+.project-info {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s ease 0.2s;
+    text-align: left;
+}
+
+.project-info h2 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #333;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.project-info .main-desc {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.project-info .sub-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 활성화 상태에서의 애니메이션 */
+.preview-image.active .project-info,
+.preview-image.fixed .project-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 반응형 조정 */
+@media (max-width: 1200px) {
+    .project-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .project-info .main-desc {
+        font-size: 1rem;
+    }
+    
+    .project-info .sub-desc {
+        font-size: 0.9rem;
+    }
+}
+
+/* 세모가방 이미지 (넓은 가로형) */
+#preview-kyobo-original,
+#preview-kyobo-semo {
+    width: 800px;
+    height: 400px;
+}
+
+/* 티니핑 이미지 (정사각형에 가까운 형태) */
+#preview-samg-edu-tool,
+#preview-samg-edu-book,
+#preview-samg-platform {
+    width: 600px;
+    height: 600px;
+}
+
+/* 놀이클래스 이미지 (세로가 긴 형태) */
+#preview-nolibal-class,
+#preview-nolibal-content {
+    width: 400px;
+    height: 600px;
+}
+
+/* 전시/제휴 이미지 (파노라마 형태) */
+#preview-woongjin-exhibition,
+#preview-woongjin-partnership {
+    width: 900px;
+    height: 300px;
+}
+
+/* 호버 효과 */
+.preview-image:hover img {
+    transform: scale(1.02); /* 확대 효과 미세 조정 */
+}
+
+/* 반응형 조정 */
+@media (max-width: 1400px) {
+    .description {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .project-description {
+        top: 90px;
+    }
+    
+    .description h2 {
+        font-size: 1.1rem;
+    }
+    
+    .description .main-desc {
+        font-size: 0.9rem;
+    }
+    
+    .description .sub-desc {
+        font-size: 0.8rem;
+    }
+}
+
+/* 불필요한 스타일 제거 */
+.preview-title,
+.content-sections {
+    display: none;
+}
+
+/* 슬라이더 컨트롤 스타일 */
+.slider-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.prev-btn,
+.next-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* 호버 시 컨트롤 표시 */
+.slider-controls {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.slider-container:hover .slider-controls {
+    opacity: 1;
+}
+
+/* SAMG 섹션 특별 스타일 제거 (중복 스타일 방지) */
+#desc-samg-edu-tool,
+#desc-samg-edu-book,
+#preview-samg-edu-tool,
+#preview-samg-edu-book {
+    /* 특별한 스타일 제거하고 기본 스타일만 사용 */
+}
+
+/* SAMG 섹션 특별 조정 */
+#desc-samg-edu-tool,
+#preview-samg-edu-tool {
+    margin: 0 auto;  /* 중앙 정렬 강제 적용 */
+}
+
+#preview-samg-edu-tool {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);  /* 정확한 중앙 정렬을 위한 변환 */
+}
+
+/* 이미지와 콘텐츠 박스의 기본 정렬 */
+img, .content-box {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Flexbox 기본 설정 */
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+/* 콘텐츠 박스 설정 */
+.content-box {
+    max-width: 48rem; /* max-w-3xl */
+    text-align: center;
+}
+
+/* 텍스트 스타일 */
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+/* 이미지 정렬 */
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 설명 영역 */
+.description {
+    margin-bottom: 1.5rem;
+}
+
+.description.active {
+    display: block;
+}
+
+/* 프리뷰 컨테이너 스타일 */
+.preview-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.preview-image {
+    display: none;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.preview-image.active {
+    display: block;
+}
+
+.preview-image img {
+    max-width: 100%;
+    width: 800px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+}
+
+/* 이미지 래퍼 스타일 (description 내부 이미지용) */
+.image-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    width: 800px;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+}
+
+/* 하위 카테고리 스타일 */
+.sub-category {
+    font-size: 0.95rem;
+    color: #555;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+/* 하위 카테고리에 속한 프로젝트 항목 스타일 */
+.sub-category + li {
+    padding-left: 1.5rem;  /* 하위 항목 들여쓰기 */
+}
+
+/* 회사명 스타일 */
+.company-name {
+    font-size: 1rem;
+    color: #ebf5b2;
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* 네비게이션 링크 색상 */
+.project-nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.project-nav a:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 연락처 링크 */
+.contact-links a {
+    color: #FFFFFF;
+    margin-top: 2.5rem;
+}
+
+/* 푸터 */
+footer p {
+    color: #FFFFFF;
+}
+
+/* bullet point 색상 */
+.project-nav li:not(.company-name):not(.sub-category)::before {
+    color: #878686;
+}
+
+/* 섹션 타이틀(대분류) 스타일 */
+.section-title {
+    list-style: none;
+    font-size: 1rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* AI WORKS, AI 창작 서브 카테고리는 약간 다르게 스타일링 */
+.section-title + li:not(.section-title) {
+    margin-left: 1.5rem;
+}
+
+/* 기존 company-name 클래스 제거하고 section-title로 대체 */
+
+/* 소분류 항목 스타일 유지 */
+.project-nav li:not(.section-title) {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 소분류 항목 bullet point 스타일 */
+.project-nav li:not(.section-title)::before {
+    content: "•";
+    position: absolute;
+    left: 0.7rem;
+    color: #878686;
+}
+
+/* 대분류 bullet point 제거 */
+.project-nav li.company-name,
+.project-nav li.sub-category {
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* 프로젝트 네비게이션 전체 bullet point 제거 */
+ul.project-nav {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  color: transparent;  /* bullet point 색상을 투명하게 */
+}
+
+/* 텍스트는 다시 보이게 */
+.project-nav a, 
+.project-nav .company-name,
+.project-nav .sub-category,
+.project-nav .year {
+  color: #FFFFFF;  /* 원래 텍스트 색상 유지 */
+}
+
+/* 대분류 bullet point 제거 */
+.project-nav li.company-name,
+.project-nav li.sub-category {
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* bullet point(marker) 숨기기 */
+.project-nav li.company-name::marker,
+.project-nav li.sub-category::marker {
+  opacity: 0;
+}
+
+/* 기존 스타일 유지 */
+.project-nav li.company-name,
+.project-nav li.sub-category {
+  list-style-type: none !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* About 섹션 스타일 */
+.about-section {
+    max-width: 800px;
+    width: calc(100% - 400px);     /* side-nav 너비 제외 */
+    margin: 60px 0 0 400px;         /* 좌측에서부터 400px 띄우기 */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.about-section h2 {
+    font-size: 1.44rem;  /* 1.8rem * 0.8 */
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+/* 프로필 이미지 스타일 */
+.about-image {
+    margin-bottom: 3rem;
+}
+
+.about-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 텍스트 영역 스타일 */
+.about-text {
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 0.72rem;  /* 0.9rem * 0.8 */
+}
+
+.about-text .main-text {
+    margin-bottom: 1.5rem;
+}
+
+.about-text .personal-text {
+    margin-top: 2rem;
+    font-style: italic;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 15px;
+    }
+    
+    .about-image img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Skills 섹션 스타일 */
+.skills-section {
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 20px;
+}
+
+.skills-section h2 {
+    font-size: 1.44rem;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    text-align: center;
+}
+
+.skills-content {
+    color: #FFFFFF;
+}
+
+.skill-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.skill-item h3 {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.skill-item p {
+    font-size: 0.72rem;
+    line-height: 1.6;
+}
+
+.ai-skills ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.ai-skills li {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.ai-skills li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #FFFFFF;
+  }
+
+/* Contact 섹션 스타일 */
+.contact-section {
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 1.44rem;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    font-weight: 500;
+}
+
+/* 이미지 스타일 */
+.contact-image {
+    margin-bottom: 3rem;
+}
+
+.contact-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 연락처 정보 스타일 */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;  /* 80% 크기 유지 */
+    color: #FFFFFF;
+}
+
+.contact-label {
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+}
+
+.contact-value {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.contact-value:hover {
+    text-decoration: underline;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .contact-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .contact-label {
+        text-align: center;
+    }
+}
+
+/* 웹툰 콘텐츠 스타일 */
+.webtoon-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.webtoon-video {
+    flex: 1;
+    max-width: 50%;
+}
+
+.webtoon-video video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.webtoon-text {
+    flex: 1;
+    text-align: left;
+    padding: 1rem;
+}
+
+.webtoon-text .main-desc,
+.webtoon-text .sub-desc {
+    font-size: 0.72rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #FFFFFF;
+}
+
+/* preview-image 내부의 webtoon-content 특별 스타일 */
+.preview-image .webtoon-content {
+    margin-top: 0;
+}
+
+.preview-image .webtoon-text {
+    padding: 0;
+}
+
+/* 비디오 영역 스타일 */
+.video-wrapper {
+    max-width: 500px;
+    margin: 20px auto 0;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* 페이드 효과를 위한 기본 스타일 */
+.fade-section {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: relative;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 프로젝트 컨테이너 스타일 */
+.projects-container {
+    position: absolute;
+    top: 60px;
+    left: 200px;
+    right: 0;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: none;
+}
+
+.projects-container.visible {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+/* 상단 메뉴(About me, Education, Skills, Contact)만 좌우 가운데, 세로(top) 고정 - side-nav(400px) 고려 제거 */
+.main-section.about-section,
+.main-section.education-section,
+.main-section.skills-section,
+.main-section.contact-section {
+    position: relative !important;
+    margin-left: 500px !important;                  /* 사이드바 너비만큼 밀기 */
+    width: calc(100% - 500px) !important;           /* 사이드바 제외한 전체 너비 */
+    max-width: 800px;
+    top: 60px !important;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    min-height: calc(100vh - 60px);
+}
+
+
+.main-section.about-section.visible,
+.main-section.education-section.visible,
+.main-section.skills-section.visible,
+.main-section.contact-section.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 900px) {
+    .main-section.about-section,
+    .main-section.education-section,
+    .main-section.skills-section,
+    .main-section.contact-section {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        padding: 10px;
+        max-width: 98vw;
+        width: 100vw;
+    }
+}
+
+/* description 전환 효과 */
+.description {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: relative;
+}
+
+.description.active {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+  
+section,
+article,
+.project-info,
+.main-section,
+.projects-container,
+hr {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* 모든 흰색 선 제거를 위한 추가 스타일 */
+section,
+article,
+.project-info,
+.main-section,
+.projects-container,
+hr,
+.container,
+.side-nav,
+.top-menu,
+.content,
+.about-section,
+.skills-section,
+.contact-section,
+.skill-item,
+.contact-info,
+footer {
+  border: none !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* 특별히 side-nav의 border 제거 */
+.side-nav {
+  border-right: none !important;
+}
+
+/* main-menu의 border 제거 */
+.main-menu {
+  border-bottom: none !important;
+}
+
+/* Education 섹션 스타일 */
+.education-section {
+    max-width: 800px;
+    margin: 60px auto 0;
+    padding: 20px;
+}
+
+.education-section h2 {
+    font-size: 1.44rem;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    font-weight: 500;
+    text-align: center;
+}
+
+.education-content {
+    color: #FFFFFF;
+}
+
+.education-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.education-year {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.education-school {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+}
+
+.education-degree {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 반응형에서도 유지 */
+@media (max-width: 900px) {
+    .main-section.about-section,
+    .main-section.education-section,
+    .main-section.skills-section,
+    .main-section.contact-section {
+        margin: 40px auto 0 !important;
+        padding: 10px;
+        max-width: 98vw;
+        width: 100vw;
+    }
+}
+
+.about-section,
+.skills-section,
+.contact-section,
+.education-section {
+  max-width: 800px;
+  width: calc(100% - 400px);
+  margin: 60px 0 0 400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .about-section,
+  .skills-section,
+  .contact-section,
+  .education-section {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+}
