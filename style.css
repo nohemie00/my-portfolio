@@ -1268,3 +1268,15 @@ footer {
     font-style: italic;
     color: rgba(255, 255, 255, 0.9);
 }
+
+/* About 섹션이 항상 가운데 정렬되도록 수정 */
+.main-section.about-section {
+    position: static !important;
+    left: unset !important;
+    right: unset !important;
+    margin: 60px auto 0 !important;
+    display: block !important;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+}
