@@ -862,8 +862,10 @@ ul.project-nav {
 /* About 섹션 스타일 */
 .about-section {
     max-width: 800px;
-    margin: 60px auto 0;
+    width: calc(100% - 400px);     /* side-nav 너비 제외 */
+    margin: 60px 0 0 400px;         /* 좌측에서부터 400px 띄우기 */
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .about-section h2 {
