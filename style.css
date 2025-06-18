@@ -1140,16 +1140,15 @@ ul.project-nav {
 
 /* 기본 섹션 스타일 */
 .main-section {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    position: absolute;
-    top: 60px;
-    left: 200px;
-    right: 0;
-    min-height: calc(100vh - 60px);
+    position: static !important;
+    left: unset !important;
+    right: unset !important;
+    top: unset !important;
+    margin: 60px auto 0 !important;
+    display: block !important;
+    max-width: 800px;
+    width: 100%;
     padding: 20px;
-    display: none;
 }
 
 .main-section.visible {
@@ -1269,14 +1268,12 @@ footer {
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* About 섹션이 항상 가운데 정렬되도록 수정 */
-.main-section.about-section {
-    position: static !important;
-    left: unset !important;
-    right: unset !important;
-    margin: 60px auto 0 !important;
-    display: block !important;
-    max-width: 800px;
-    width: 100%;
-    padding: 20px;
+/* 반응형에서도 유지 */
+@media (max-width: 900px) {
+    .main-section {
+        margin: 40px auto 0 !important;
+        padding: 10px;
+        max-width: 98vw;
+        width: 100vw;
+    }
 }
