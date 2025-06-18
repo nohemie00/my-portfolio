@@ -1138,8 +1138,11 @@ ul.project-nav {
     display: block;
 }
 
-/* main-section(about, education, skills, contact) 좌우는 가운데, 세로(top)는 고정 */
-.main-section {
+/* 상단 메뉴(About me, Education, Skills, Contact)만 좌우 가운데, 세로(top) 고정 */
+.main-section.about-section,
+.main-section.education-section,
+.main-section.skills-section,
+.main-section.contact-section {
     position: absolute !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -1155,13 +1158,19 @@ ul.project-nav {
     min-height: calc(100vh - 60px);
 }
 
-.main-section.visible {
+.main-section.about-section.visible,
+.main-section.education-section.visible,
+.main-section.skills-section.visible,
+.main-section.contact-section.visible {
     opacity: 1;
     visibility: visible;
 }
 
 @media (max-width: 900px) {
-    .main-section {
+    .main-section.about-section,
+    .main-section.education-section,
+    .main-section.skills-section,
+    .main-section.contact-section {
         top: 20px !important;
         padding: 10px;
         max-width: 98vw;
@@ -1282,7 +1291,10 @@ footer {
 
 /* 반응형에서도 유지 */
 @media (max-width: 900px) {
-    .main-section {
+    .main-section.about-section,
+    .main-section.education-section,
+    .main-section.skills-section,
+    .main-section.contact-section {
         margin: 40px auto 0 !important;
         padding: 10px;
         max-width: 98vw;
