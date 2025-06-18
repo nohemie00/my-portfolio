@@ -1145,20 +1145,20 @@ ul.project-nav {
 .main-section.education-section,
 .main-section.skills-section,
 .main-section.contact-section {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    top: 60px !important;
-    margin: 0 !important;
-    display: block !important;
+    position: relative !important;
+    margin-left: 400px !important;                  /* 사이드바 너비만큼 밀기 */
+    width: calc(100% - 400px) !important;           /* 사이드바 제외한 전체 너비 */
     max-width: 800px;
-    width: 100%;
+    top: 60px !important;
     padding: 20px;
+    box-sizing: border-box;
+    display: block !important;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
     min-height: calc(100vh - 60px);
 }
+
 
 .main-section.about-section.visible,
 .main-section.education-section.visible,
