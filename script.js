@@ -223,6 +223,19 @@ function showSection(sectionId) {
         const section = document.getElementById(sectionId);
         if (section) {
             section.classList.add('visible');
+            // 스크롤 위치 보정
+            setTimeout(() => {
+                if (typeof section.scrollIntoView === 'function') {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    // scrollIntoView가 없으면 window.scrollTo로 보정
+                    const rect = section.getBoundingClientRect();
+                    window.scrollTo({
+                        top: window.scrollY + rect.top - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 10);
         }
     }
 }

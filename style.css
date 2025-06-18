@@ -1138,13 +1138,13 @@ ul.project-nav {
     display: block;
 }
 
-/* 상단 메뉴(About me, Education, Skills, Contact)만 좌우 가운데, 세로(top) 고정 */
+/* 상단 메뉴(About me, Education, Skills, Contact)만 좌우 가운데, 세로(top) 고정 - side-nav(400px) 고려 */
 .main-section.about-section,
 .main-section.education-section,
 .main-section.skills-section,
 .main-section.contact-section {
     position: absolute !important;
-    left: 50% !important;
+    left: calc(400px + 50%) !important;  /* 사이드 메뉴 고려 */
     transform: translateX(-50%) !important;
     top: 60px !important;
     margin: 0 !important;
@@ -1171,7 +1171,8 @@ ul.project-nav {
     .main-section.education-section,
     .main-section.skills-section,
     .main-section.contact-section {
-        top: 20px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         padding: 10px;
         max-width: 98vw;
         width: 100vw;
