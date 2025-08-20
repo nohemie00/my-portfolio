@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Connections</title>
+    <script type="text/javascript" src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #282c34;
+            overflow: hidden;
+            font-family: 'Noto Sans KR', 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        #mynetwork {
+            width: 100%;
+            height: 100vh;
+            background-color: #282c34;
+            border-radius: 12px;
+            display: block;
+            margin: 0;
+        }
+        
+        /* ========== 로고 롤링 스타일 시작 ========== */
+        
+        /* 애니메이션 정의 */
+        @keyframes roll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* 로고 롤링 전체 컨테이너 */
+        .logo-roller-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+            background-color: #282c34;
+            -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+            mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+        }
+        
+        /* 실제로 움직이는 영역 */
+        .logo-roller {
+            display: flex;
+            width: fit-content;
+        }
+        
+        /* 로고 그룹 (원본과 복사본) */
+        .logo-group {
+            display: flex;
+            align-items: center;
+            animation: roll 60s linear infinite;
+        }
+        
+        /* 개별 로고 이미지 스타일 */
+        .logo-group img {
+            height: 40px;
+            width: auto;
+            margin: 0 40px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        /* 마우스를 올렸을 때 컬러로 변경 */
+        .logo-roller-container:hover .logo-group {
+            animation-play-state: paused;
+        }
+        .logo-group img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        /* ========== 로고 롤링 스타일 끝 ========== */
+    </style>
+</head>
+<body>
+    <div id="mynetwork"></div>
+    
+    <!-- 파트너사 로고 롤링 섹션 -->
+    <div class="logo-roller-container">
+        <div class="logo-roller">
+            <div class="logo-group">
+                <!-- 출판사 로고들 -->
+                <img src="https://www.greatbooks.co.kr/static/images/common/logo.svg" alt="그레이트북스">
+                <img src="https://www.gimmyoung.com/Content/Images/common/logo.png" alt="김영사">
+                <img src="https://www.nebooks.co.kr/img/common/logo.svg" alt="NE능률">
+                <img src="https://borim.co.kr/img/main/logo_230302.png" alt="보림출판사">
+                <img src="http://www.epublic.co.kr/images/common/logo.gif" alt="이퍼블릭코리아">
+                <img src="https://www.kinderland.co.kr/images/common/logo.png" alt="킨더랜드">
+                <img src="https://www.bandal.co.kr/images/common/logo.png" alt="반달">
+                <img src="https://www.1000wind.com/images/common/logo.png" alt="천개의바람">
+                <img src="https://www.readingbear.co.kr/images/common/logo.png" alt="책읽는곰">
+                <img src="https://www.humancube.co.kr/images/common/logo.png" alt="휴먼큐브">
+                <img src="https://www.bukgeukgom.co.kr/images/common/logo.png" alt="북극곰">
+                <img src="https://www.bookcrew.co.kr/images/common/logo.png" alt="북크루">
+                <img src="https://www.ddan.co.kr/images/common/logo.png" alt="딴생각">
+                <img src="https://www.printingmuseum.or.kr/images/common/logo.png" alt="활판인쇄박물관">
+                
+                <!-- 미디어 로고들 -->
+                <img src="https://i.namu.wiki/i/W3r6fOubwD6i24-NBqD5VjWl-3R9u0_3vj52zE30e9XNl-20d-VfVqg64fUPp-oVf_Q7gV-D-cK4hQ.svg" alt="KBS N">
+                <img src="https://kidsedutv.com/images/common/logo.png" alt="Kids EDU TV">
+                <img src="https://image.lghellovision.net/assets/images/common/logo.png" alt="LG HelloVision">
+                <img src="https://www.kcmi.co.kr/images/common/logo.png" alt="KCMI">
+                <img src="https://www.medianart.kr/img/logo.png" alt="미디어앤아트">
+                <img src="https://www.myartida.com/images/common/logo.png" alt="마이아트이다">
+                <img src="https://www.bondavinci.com/images/common/logo.png" alt="본다빈치">
+                <img src="https://www.cultureandireaders.com/images/common/logo.png" alt="컬쳐앤아이리더스">
+                <img src="https://www.unexpectedstudio.com/images/common/logo.png" alt="뜻밖의녹음실">
+                <img src="https://www.1mclassic.com/images/common/logo.png" alt="1m클래식">
+                <img src="https://www.eggdoctor.com/images/common/logo.png" alt="에그박사">
+                <img src="https://heyjini.com/img/jini_logo_origin.png" alt="헤이지니">
+                
+                <!-- 호텔앤리조트 로고들 -->
+                <img src="https://www.hyundaihotel.com/images/common/logo.png" alt="현대(리한)호텔">
+                <img src="https://phoenixhnr.co.kr/asset/images/common/logo.png" alt="휘닉스중앙">
+                <img src="https://www.high1.com/assets/images/common/logo.png" alt="하이원">
+                <img src="https://www.lottehotel.com/content/dam/lotte-hotel/global/common/base/logo-lotte-hotel.svg" alt="롯데호텔">
+                
+                <!-- 협력사 로고들 -->
+                <img src="https://www.everland.com/images/everland/common/logo.png" alt="에버랜드">
+                <img src="https://www.lguplus.com/images/common/header-logo-2023.png" alt="LG 유플러스">
+                <img src="https://www.sempio.com/image/logo_foot.png" alt="샘표">
+                <img src="https://www.harim.com/images/common/logo.png" alt="하림">
+                <img src="https://www.paradise.co.kr/images/common/logo.png" alt="파라다이스">
+                <img src="https://yanadoo.co.kr/images/common/logo_new.png" alt="야나두">
+                <img src="https://geekble.kr/wp-content/uploads/2023/07/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_%E1%84%80%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B3%E1%86%AF_White-1.png" alt="긱블">
+                <img src="https://www.mirae-n.com/images/com/logo.png" alt="미래엔">
+                <img src="https://corp.interpark.com/images/ci/interpark_logo.png" alt="인터파크">
+                <img src="https://www.seoulchildrensmuseum.org/upload/main/logo_color.png" alt="서울상상나라">
+                <img src="https://www.sangha.co.kr/images/common/logo.png" alt="상하농원">
+                <img src="https://www.saypen.com/Content/Images/logo.png" alt="세이펜">
+                <img src="https://www.ycon.co.kr/images/common/logo.png" alt="유콘">
+                <img src="https://www.hamsoa.com/images/common/logo.png" alt="함소아한의원">
+                <img src="https://www.bugpark.co.kr/images/common/logo.png" alt="용인곤충테마파크">
+                <img src="https://www.simplesoft.co.kr/images/common/logo.png" alt="심플소프트">
+                <img src="https://www.sandart.co.kr/images/common/logo.png" alt="샌드아트코">
+                <img src="https://www.kiddu.co.kr/images/common/logo.png" alt="키두">
+                <img src="https://www.kidsschole.com/images/layout/logo.png" alt="키즈스콜레">
+            </div>
+            <div class="logo-group">
+                <!-- 출판사 로고들 (복사본) -->
+                <img src="https://www.greatbooks.co.kr/static/images/common/logo.svg" alt="그레이트북스">
+                <img src="https://www.gimmyoung.com/Content/Images/common/logo.png" alt="김영사">
+                <img src="https://www.nebooks.co.kr/img/common/logo.svg" alt="NE능률">
+                <img src="https://borim.co.kr/img/main/logo_230302.png" alt="보림출판사">
+                <img src="http://www.epublic.co.kr/images/common/logo.gif" alt="이퍼블릭코리아">
+                <img src="https://www.kinderland.co.kr/images/common/logo.png" alt="킨더랜드">
+                <img src="https://www.bandal.co.kr/images/common/logo.png" alt="반달">
+                <img src="https://www.1000wind.com/images/common/logo.png" alt="천개의바람">
+                <img src="https://www.readingbear.co.kr/images/common/logo.png" alt="책읽는곰">
+                <img src="https://www.humancube.co.kr/images/common/logo.png" alt="휴먼큐브">
+                <img src="https://www.bukgeukgom.co.kr/images/common/logo.png" alt="북극곰">
+                <img src="https://www.bookcrew.co.kr/images/common/logo.png" alt="북크루">
+                <img src="https://www.ddan.co.kr/images/common/logo.png" alt="딴생각">
+                <img src="https://www.printingmuseum.or.kr/images/common/logo.png" alt="활판인쇄박물관">
+                
+                <!-- 미디어 로고들 (복사본) -->
+                <img src="https://i.namu.wiki/i/W3r6fOubwD6i24-NBqD5VjWl-3R9u0_3vj52zE30e9XNl-20d-VfVqg64fUPp-oVf_Q7gV-D-cK4hQ.svg" alt="KBS N">
+                <img src="https://kidsedutv.com/images/common/logo.png" alt="Kids EDU TV">
+                <img src="https://image.lghellovision.net/assets/images/common/logo.png" alt="LG HelloVision">
+                <img src="https://www.kcmi.co.kr/images/common/logo.png" alt="KCMI">
+                <img src="https://www.medianart.kr/img/logo.png" alt="미디어앤아트">
+                <img src="https://www.myartida.com/images/common/logo.png" alt="마이아트이다">
+                <img src="https://www.bondavinci.com/images/common/logo.png" alt="본다빈치">
+                <img src="https://www.cultureandireaders.com/images/common/logo.png" alt="컬쳐앤아이리더스">
+                <img src="https://www.unexpectedstudio.com/images/common/logo.png" alt="뜻밖의녹음실">
+                <img src="https://www.1mclassic.com/images/common/logo.png" alt="1m클래식">
+                <img src="https://www.eggdoctor.com/images/common/logo.png" alt="에그박사">
+                <img src="https://heyjini.com/img/jini_logo_origin.png" alt="헤이지니">
+                
+                <!-- 호텔앤리조트 로고들 (복사본) -->
+                <img src="https://www.hyundaihotel.com/images/common/logo.png" alt="현대(리한)호텔">
+                <img src="https://phoenixhnr.co.kr/asset/images/common/logo.png" alt="휘닉스중앙">
+                <img src="https://www.high1.com/assets/images/common/logo.png" alt="하이원">
+                <img src="https://www.lottehotel.com/content/dam/lotte-hotel/global/common/base/logo-lotte-hotel.svg" alt="롯데호텔">
+                
+                <!-- 협력사 로고들 (복사본) -->
+                <img src="https://www.everland.com/images/everland/common/logo.png" alt="에버랜드">
+                <img src="https://www.lguplus.com/images/common/header-logo-2023.png" alt="LG 유플러스">
+                <img src="https://www.sempio.com/image/logo_foot.png" alt="샘표">
+                <img src="https://www.harim.com/images/common/logo.png" alt="하림">
+                <img src="https://www.paradise.co.kr/images/common/logo.png" alt="파라다이스">
+                <img src="https://yanadoo.co.kr/images/common/logo_new.png" alt="야나두">
+                <img src="https://geekble.kr/wp-content/uploads/2023/07/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_%E1%84%80%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B3%E1%86%AF_White-1.png" alt="긱블">
+                <img src="https://www.mirae-n.com/images/com/logo.png" alt="미래엔">
+                <img src="https://corp.interpark.com/images/ci/interpark_logo.png" alt="인터파크">
+                <img src="https://www.seoulchildrensmuseum.org/upload/main/logo_color.png" alt="서울상상나라">
+                <img src="https://www.sangha.co.kr/images/common/logo.png" alt="상하농원">
+                <img src="https://www.saypen.com/Content/Images/logo.png" alt="세이펜">
+                <img src="https://www.ycon.co.kr/images/common/logo.png" alt="유콘">
+                <img src="https://www.hamsoa.com/images/common/logo.png" alt="함소아한의원">
+                <img src="https://www.bugpark.co.kr/images/common/logo.png" alt="용인곤충테마파크">
+                <img src="https://www.simplesoft.co.kr/images/common/logo.png" alt="심플소프트">
+                <img src="https://www.sandart.co.kr/images/common/logo.png" alt="샌드아트코">
+                <img src="https://www.kiddu.co.kr/images/common/logo.png" alt="키두">
+                <img src="https://www.kidsschole.com/images/layout/logo.png" alt="키즈스콜레">
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // 1. 데이터 정의
+        // ------------------------------------------------------------------
+
+        // 중심이 되는 5개의 카테고리
+        const mainCategories = {
+            publisher: '출판사',
+            media: '미디어',
+            hotel: '호텔',
+            partner: '협력사',
+            artist: '아티스트'
+        };
+
+        // 각 카테고리에 속한 하위 리스트
+        const dataLists = {
+            publisher: ['한국그림책출판협회', '어린이출판협회', '이퍼블릭코리아', '중앙출판사', '킨더랜드', '반달', '보림출판사', '그레이트북스', '천개의바람', '책읽는곰', '휴먼큐브', '김영사', '능률', '북극곰', '북크루', '딴생각', '활판인쇄박물관'],
+            media: ['KBS N', 'Kids EDU TV', 'LG HelloVision', 'KCMI', '미디어앤아트', '마이아트이다', '본다빈치', '컬쳐앤아이리더스', '뜻밖의녹음실', '1m클래식', '에그박사', '헤이지니'],
+            hotel: ['현대(리한)호텔', '휘닉스중앙', '하이원', '롯데호텔'],
+            partner: ['에버랜드', 'LG 유플러스', '샘표', '하림', '파라다이스', '야나두', '긱블', '미래엔', '인터파크', '서울상상나라', '상하농원', '세이펜', '유콘', '함소아한의원', '용인곤충테마파크', '심플소프트', '샌드아트코', '키두', '키즈스콜레'],
+            artist: ['신유미', '이욱재', '이범재', '신원미', '난주', '조경희', '신현수', '구신애', '이순옥', '이시원', '홍미령', '김지연', '허아성', '허정윤', '김가희']
+        };
+
+        // 2. vis-network.js가 이해할 수 있는 데이터 형태로 가공
+        // ------------------------------------------------------------------
+
+        const nodes = [];
+        const edges = [];
+
+        // 중심 노드 추가 (고정 위치 설정으로 섹션 분리)
+        const centerPositions = {
+            '출판사': { x: -150, y: -120 },
+            '미디어': { x: 150, y: -120 },
+            '호텔': { x: 0, y: 0 },
+            '협력사': { x: -150, y: 120 },
+            '아티스트': { x: 150, y: 120 }
+        };
+        
+        for (const key in mainCategories) {
+            const categoryName = mainCategories[key];
+            nodes.push({
+                id: categoryName,
+                label: categoryName,
+                group: 'main',
+                x: centerPositions[categoryName].x,
+                y: centerPositions[categoryName].y,
+                fixed: true // 위치 고정으로 섹션 분리
+            });
+        }
+        
+
+
+        // 하위 노드 및 연결선 추가 (다양한 길이)
+        for (const categoryKey in dataLists) {
+            const mainNodeId = mainCategories[categoryKey];
+            dataLists[categoryKey].forEach((item, index) => {
+                // 노드 추가 (동일한 이름의 아티스트가 있을 수 있으므로 id는 고유하게)
+                const nodeId = `${mainNodeId}_${item}`;
+                nodes.push({
+                    id: nodeId,
+                    label: item,
+                    group: categoryKey
+                });
+                
+                // 다양한 연결선 길이 설정 (인덱스 기반)
+                const lengthVariations = [80, 100, 120, 140, 160];
+                const selectedLength = lengthVariations[index % lengthVariations.length];
+                
+                // 중심 노드와 하위 노드를 잇는 연결선 추가
+                edges.push({
+                    from: mainNodeId,
+                    to: nodeId,
+                    length: selectedLength // 다양한 길이 적용
+                });
+            });
+        }
+
+        // 3. 그래프 생성
+        // ------------------------------------------------------------------
+
+        // 그래프를 그릴 div 요소를 가져옵니다.
+        const container = document.getElementById('mynetwork');
+
+        // 노드와 엣지 데이터를 객체에 담습니다.
+        const data = {
+            nodes: new vis.DataSet(nodes),
+            edges: new vis.DataSet(edges),
+        };
+
+        // 그래프의 디자인과 물리 엔진 등 옵션을 설정합니다.
+        const options = {
+            nodes: {
+                shape: 'dot', // 노드 모양
+                size: 8,      // 기본 노드 크기 더 감소
+                font: {
+                    size: 16,  // 폰트 크기 조정
+                    color: '#ffffff',
+                    face: 'Noto Sans KR, Arial, sans-serif'
+                },
+                borderWidth: 1,
+                color: {
+                    border: '#ffffff',
+                    background: '#555555'
+                }
+            },
+            edges: {
+                width: 1,
+                color: {
+                    color: '#888888',
+                    highlight: '#ffffff'
+                },
+                smooth: {
+                    type: 'continuous'
+                }
+            },
+            physics: {
+                // 물리 엔진 옵션 - 섹션 완전 분리
+                forceAtlas2Based: {
+                    gravitationalConstant: -200,  // 매우 강한 반발력으로 섹션 분리
+                    centralGravity: 0.02,         // 각 섹션 중심으로의 강한 힘
+                    springLength: 60,             // 짧은 연결선
+                    springConstant: 0.1,          // 강한 스프링
+                    avoidOverlap: 0.9,            // 강한 노드 겹침 방지
+                    damping: 0.8,                 // 강한 감쇠
+                },
+                maxVelocity: 15,                  // 적당한 속도
+                solver: 'forceAtlas2Based',
+                timestep: 0.1,                    // 시간 간격
+                stabilization: { iterations: 400 }, // 안정화 반복
+                enabled: true,
+                barnesHut: {
+                    gravitationalConstant: -3000,
+                    centralGravity: 0.5,
+                    springLength: 50,
+                    springConstant: 0.08,
+                    damping: 0.15,
+                    avoidOverlap: 0.8
+                }
+            },
+            interaction: {
+                hover: true,      // 마우스를 올렸을 때 하이라이트
+                dragNodes: true,  // 노드 드래그 가능
+                zoomView: true,   // 줌 가능
+                dragView: true,   // 화면 드래그 가능
+                zoomSpeed: 1.0,   // 줌 속도
+                minZoom: 0.1,     // 최소 줌 레벨 (더 넓은 뷰 허용)
+                maxZoom: 3.0      // 최대 줌 레벨
+            },
+            layout: {
+                improvedLayout: true,
+                clusterThreshold: 150
+            },
+            groups: {
+                // 중심 노드 스타일
+                main: {
+                    shape: 'ellipse',
+                    size: 35,
+                    font: { 
+                        size: 28, 
+                        color: '#ffffff', 
+                        bold: true,
+                        face: 'Noto Sans KR, Arial, sans-serif'
+                    },
+                    color: { background: '#f0a30a', border: '#f0a30a' }
+                },
+                // 카테고리별 하위 노드 색상
+                publisher: { color: { background: '#e07a5f', border: '#e07a5f' } },
+                media:     { color: { background: '#81b29a', border: '#81b29a' } },
+                hotel:     { color: { background: '#f2cc8f', border: '#f2cc8f' } },
+                partner:   { color: { background: '#6d597a', border: '#6d597a' } },
+                artist:    { color: { background: '#3d405b', border: '#3d405b' } },
+            }
+        };
+
+        // 네트워크 객체를 생성합니다.
+        const network = new vis.Network(container, data, options);
+        
+        // 초기 줌 레벨 설정 (더 넓은 뷰)
+        network.moveTo({
+            position: { x: 0, y: 0 },
+            scale: 0.6, // 더 넓은 뷰로 시작
+            animation: {
+                duration: 0
+            }
+        });
+        
+        // 노드들이 프레임 밖으로 나가지 않도록 강력한 경계 설정
+        network.on('stabilizationProgress', function(params) {
+            // 안정화 중에도 경계 내에 유지
+            const nodes = data.nodes.get();
+            nodes.forEach(node => {
+                if (node.x < -300) node.x = -300;
+                if (node.x > 300) node.x = 300;
+                if (node.y < -250) node.y = -250;
+                if (node.y > 250) node.y = 250;
+            });
+        });
+        
+        // 실시간으로 노드 위치 모니터링 및 경계 제한
+        network.on('stabilizationIterationsDone', function() {
+            // 안정화 완료 후에도 지속적으로 경계 모니터링
+            setInterval(() => {
+                const nodes = data.nodes.get();
+                let needsUpdate = false;
+                
+                nodes.forEach(node => {
+                    let changed = false;
+                    
+                    // X축 경계 제한 (섹션별 분리)
+                    if (node.x < -300) {
+                        node.x = -300;
+                        changed = true;
+                    } else if (node.x > 300) {
+                        node.x = 300;
+                        changed = true;
+                    }
+                    
+                    // Y축 경계 제한 (섹션별 분리)
+                    if (node.y < -250) {
+                        node.y = -250;
+                        changed = true;
+                    } else if (node.y > 250) {
+                        node.y = 250;
+                        changed = true;
+                    }
+                    
+                    if (changed) {
+                        needsUpdate = true;
+                    }
+                });
+                
+                // 변경사항이 있으면 네트워크 업데이트
+                if (needsUpdate) {
+                    data.nodes.update(nodes);
+                }
+            }, 100); // 100ms마다 체크
+        });
+
+        // iframe에서도 전체 그래프가 보이도록 설정
+        network.on('stabilizationIterationsDone', function() {
+            // 안정화 완료 후 전체 뷰로 맞춤 (더 넓은 뷰)
+            network.fit({
+                animation: {
+                    duration: 1200,
+                    easingFunction: 'easeInOutQuad'
+                },
+                padding: 50 // 여백 추가
+            });
+        });
+
+        // 초기 로딩 시에도 전체 뷰로 맞춤
+        setTimeout(() => {
+            network.fit({
+                animation: {
+                    duration: 1000,
+                    easingFunction: 'easeInOutQuad'
+                },
+                padding: 50 // 여백 추가
+            });
+        }, 200);
+
+        // iframe 크기 변경 시에도 대응
+        window.addEventListener('resize', function() {
+            setTimeout(() => {
+                network.fit({
+                    animation: {
+                        duration: 600,
+                        easingFunction: 'easeInOutQuad'
+                    },
+                    padding: 50 // 여백 추가
+                });
+            }, 150);
+        });
+    </script>
+</body>
+</html> 

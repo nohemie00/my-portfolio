@@ -4,6 +4,37 @@
   <meta charset="UTF-8">
   <title>한유리 Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="https://visjs.github.io/vis-network/standalone/umd/vis-network.min.js"></script>
+
+  <style>
+    /* Network Connections 섹션을 위한 스타일 재정의(Override) */
+    #desc-network-connections {
+      /* 높이를 내용물(iframe)에 맞게 자동으로 조절하도록 설정 */
+      height: auto; 
+      
+      /* 최소 높이를 넉넉하게 확보해 iframe이 잘리지 않도록 함 */
+      min-height: 75vh; 
+      
+      /* flexbox나 다른 레이아웃으로 인해 요소가 숨겨지는 것을 방지 */
+      display: block !important; 
+      
+      /* 최대 너비 제한 해제 */
+      max-width: 100% !important;
+      
+      /* 패딩 조정 */
+      padding: 20px !important;
+    }
+
+    /* div 안의 iframe 크기도 다시 한번 명확하게 지정 */
+    #desc-network-connections iframe {
+      height: 70vh !important;
+      width: 100% !important;
+      border: none !important;
+      border-radius: 12px !important;
+      background-color: #282c34 !important;
+      display: block !important;
+    }
+  </style>
 
    <!-- ✅ Open Graph 메타 태그 추가 -->
   <meta property="og:title" content="한유리 Portfolio" />
@@ -115,6 +146,12 @@
         <li>
           <a href="#woongjin-video">웅진북클럽 화상교육 시스템 출시</a>
           <span class="year">2014</span>
+        </li>
+
+        <li class="sub-category">Network Connections</li>
+        <li>
+          <a href="#network-connections">협력사 및 제휴사</a>
+          <span class="year">2014-2025</span>
         </li>
 
         <li class="company-name">Personal Projects</li>
@@ -375,6 +412,13 @@
             </div>
           </div>
 
+          <!-- Network Connections -->
+          <div class="description" id="desc-network-connections">
+            <h2>Network Connections</h2>
+            <p class="main-desc">다양한 산업 분야의 파트너들과의 유기적인 네트워크 연결</p>
+            <iframe src="network.html" frameborder="0"></iframe>
+          </div>
+
           <!-- AI 창작 - 영상 -->
           <div class="description" id="desc-ai-video">
             <h2>AI 영상 제작</h2>
@@ -566,6 +610,7 @@
     <p>ⓒ 2025 by 한유리. All rights reserved.</p>
   </footer>
 
+  
   <script src="script.js"></script>
 </body>
 </html>

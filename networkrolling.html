@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Roller</title>
+    <style>
+        /* ========== 로고 롤링 스타일 시작 ========== */
+        body {
+            margin: 0;
+            background-color: #ffffff; /* 배경색은 포트폴리오에 맞게 수정하세요 */
+        }
+        
+        /* 애니메이션 정의 */
+        @keyframes roll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-100%); }
+        }
+
+        /* 로고 롤링 전체 컨테이너 */
+        .logo-roller-container {
+          width: 100%;
+          overflow: hidden;
+          padding: 30px 0;
+          -webkit-mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+          mask-image: linear-gradient(to right, transparent, white 20%, white 80%, transparent);
+        }
+
+        .logo-roller {
+          display: flex;
+          width: fit-content;
+        }
+
+        .logo-group {
+          display: flex;
+          align-items: center;
+          animation: roll 60s linear infinite;
+        }
+
+        .logo-group img {
+          height: 40px;
+          width: auto;
+          margin: 0 40px;
+          filter: grayscale(100%);
+          opacity: 0.6;
+          transition: all 0.3s ease;
+        }
+
+        .logo-roller-container:hover .logo-group {
+          animation-play-state: paused;
+        }
+        .logo-group img:hover {
+          filter: grayscale(0%);
+          opacity: 1;
+          transform: scale(1.1);
+        }
+        /* ========== 로고 롤링 스타일 끝 ========== */
+    </style>
+</head>
+<body>
+
+    <div class="logo-roller-container">
+      <div class="logo-roller">
+        <div class="logo-group">
+          <img src="https://www.greatbooks.co.kr/static/images/common/logo.svg" alt="그레이트북스">
+          <img src="https://www.gimmyoung.com/Content/Images/common/logo.png" alt="김영사">
+          <img src="https://www.nebooks.co.kr/img/common/logo.svg" alt="NE능률">
+          <img src="https://www.lguplus.com/images/common/header-logo-2023.png" alt="LG U+">
+          <img src="https://geekble.kr/wp-content/uploads/2023/07/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_%E1%84%80%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B3%E1%86%AF_White-1.png" alt="긱블">
+          </div>
+        <div class="logo-group">
+          <img src="https://www.greatbooks.co.kr/static/images/common/logo.svg" alt="그레이트북스">
+          <img src="https://www.gimmyoung.com/Content/Images/common/logo.png" alt="김영사">
+          <img src="https://www.nebooks.co.kr/img/common/logo.svg" alt="NE능률">
+          <img src="https://www.lguplus.com/images/common/header-logo-2023.png" alt="LG U+">
+          <img src="https://geekble.kr/wp-content/uploads/2023/07/%E1%84%85%E1%85%A9%E1%84%80%E1%85%A9_%E1%84%80%E1%85%B5%E1%86%A8%E1%84%87%E1%85%B3%E1%86%AF_White-1.png" alt="긱블">
+          </div>
+      </div>
+    </div>
+    </body>
+</html> 

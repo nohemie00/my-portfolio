@@ -171,6 +171,13 @@ function showDescription(id) {
         targetDesc.style.display = 'block';
         setTimeout(() => {
             targetDesc.classList.add('active');
+            
+            // 네트워크 연결 섹션이 활성화되면 네트워크 초기화
+            if (id === 'network-connections') {
+                setTimeout(() => {
+                    initializeNetworkGraph();
+                }, 100);
+            }
         }, 50);
     }
 }
@@ -269,4 +276,160 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 초기 상태: About me 섹션 표시
     showSection('about');
+    
+    // 네트워크 그래프는 해당 섹션이 활성화될 때 초기화
+    // initializeNetworkGraph();
 });
+
+// vis.js 기반 네트워크 다이어그램 초기화
+function initializeNetworkGraph() {
+    const container = document.getElementById('mynetwork');
+    if (!container) {
+        console.error('Network container not found');
+        return;
+    }
+
+    // vis.js 라이브러리 확인
+    if (typeof vis === 'undefined') {
+        console.error('vis.js library not loaded');
+        return;
+    }
+
+    console.log('Initializing network graph...');
+
+    // 1. 데이터 정의
+    const mainCategories = {
+        publisher: '출판사',
+        media: '미디어',
+        hotel: '호텔앤리조트',
+        partner: '협력사',
+        artist: '아티스트'
+    };
+
+    // 각 카테고리에 속한 하위 리스트
+    const dataLists = {
+        publisher: ['한국그림책출판협회', '어린이출판협회', '이퍼블릭코리아', '중앙출판사', '킨더랜드', '반달', '보림출판사', '그레이트북스', '천개의바람', '책읽는곰', '휴먼큐브', '김영사', '능률', '북극곰', '북크루', '딴생각', '활판인쇄박물관'],
+        media: ['KBS N', 'Kids EDU TV', 'LG HelloVision', 'KCMI', '미디어앤아트', '마이아트이다', '본다빈치', '컬쳐앤아이리더스', '뜻밖의녹음실', '1m클래식', '에그박사', '헤이지니'],
+        hotel: ['현대(리한)호텔', '휘닉스중앙', '하이원', '롯데호텔'],
+        partner: ['에버랜드', 'LG 유플러스', '샘표', '하림', '파라다이스', '야나두', '긱블', '미래엔', '인터파크', '서울상상나라', '상하농원', '세이펜', '유콘', '함소아한의원', '용인곤충테마파크', '심플소프트', '샌드아트코', '키두', '키즈스콜레'],
+        artist: ['신유미', '이욱재', '이범재', '신원미', '난주', '조경희', '신현수', '구신애', '이순옥', '이시원', '홍미령', '김지연', '허아성', '허정윤', '김가희']
+    };
+
+    // 2. vis-network.js가 이해할 수 있는 데이터 형태로 가공
+    const nodes = [];
+    const edges = [];
+
+    // 중심 노드 추가
+    for (const key in mainCategories) {
+        nodes.push({
+            id: mainCategories[key],
+            label: mainCategories[key],
+            group: 'main'
+        });
+    }
+
+    // 하위 노드 및 연결선 추가
+    for (const categoryKey in dataLists) {
+        const mainNodeId = mainCategories[categoryKey];
+        dataLists[categoryKey].forEach(item => {
+            const nodeId = `${mainNodeId}_${item}`;
+            nodes.push({
+                id: nodeId,
+                label: item,
+                group: categoryKey
+            });
+            edges.push({
+                from: mainNodeId,
+                to: nodeId
+            });
+        });
+    }
+
+    console.log('Nodes:', nodes.length, 'Edges:', edges.length);
+
+    // 3. 그래프 생성
+    const data = {
+        nodes: new vis.DataSet(nodes),
+        edges: new vis.DataSet(edges),
+    };
+
+    // 그래프의 디자인과 물리 엔진 등 옵션을 설정
+    const options = {
+        nodes: {
+            shape: 'dot',
+            size: 12,
+            font: {
+                size: 14,
+                color: '#ffffff'
+            },
+            borderWidth: 2,
+            color: {
+                border: '#ffffff',
+                background: '#555555'
+            }
+        },
+        edges: {
+            width: 1,
+            color: {
+                color: '#888888',
+                highlight: '#ffffff'
+            },
+            smooth: {
+                type: 'continuous'
+            }
+        },
+        physics: {
+            forceAtlas2Based: {
+                gravitationalConstant: -26,
+                centralGravity: 0.005,
+                springLength: 230,
+                springConstant: 0.18,
+            },
+            maxVelocity: 146,
+            solver: 'forceAtlas2Based',
+            timestep: 0.35,
+            stabilization: { iterations: 150 },
+        },
+        interaction: {
+            hover: true,
+            dragNodes: true,
+            zoomView: true,
+            dragView: true
+        },
+        groups: {
+            // 중심 노드 스타일
+            main: {
+                shape: 'ellipse',
+                size: 50,
+                font: { size: 24, color: '#ffffff', bold: true },
+                color: { background: '#f0a30a', border: '#f0a30a' }
+            },
+            // 카테고리별 하위 노드 색상
+            publisher: { color: { background: '#e07a5f', border: '#e07a5f' } },
+            media: { color: { background: '#81b29a', border: '#81b29a' } },
+            hotel: { color: { background: '#f2cc8f', border: '#f2cc8f' } },
+            partner: { color: { background: '#6d597a', border: '#6d597a' } },
+            artist: { color: { background: '#3d405b', border: '#3d405b' } },
+        }
+    };
+
+    try {
+        // 네트워크 객체를 생성
+        const network = new vis.Network(container, data, options);
+        console.log('Network created successfully');
+        
+        // 네트워크 이벤트 리스너 추가
+        network.on('stabilizationProgress', function(params) {
+            console.log('Stabilization progress:', params.iterations, '/', params.total);
+        });
+        
+        network.on('stabilizationIterationsDone', function() {
+            console.log('Network stabilized');
+        });
+        
+    } catch (error) {
+        console.error('Error creating network:', error);
+    }
+}
+
+
