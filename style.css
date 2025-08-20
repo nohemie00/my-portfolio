@@ -70,6 +70,7 @@ body {
     font-weight: 400;
     transition: all 0.3s ease;
     position: relative;
+    white-space: nowrap; /* About me 줄바꿈 방지 */
 }
 
 .main-menu a:hover {
