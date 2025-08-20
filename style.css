@@ -169,7 +169,7 @@ body {
 .top-menu ul {
     list-style: none;
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     justify-content: flex-start;
     align-items: center;
 }
