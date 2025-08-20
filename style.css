@@ -1408,3 +1408,11 @@ footer {
     min-height: 400px;
   }
 }
+
+/* 이 코드를 style.css 파일의 맨 아래에 추가하세요 */
+#desc-ai-video,
+#desc-ai-film,
+#desc-ai-webtoon,
+#desc-ai-cardnews {
+  margin-top: -80vh; /* ✅ 이 값을 조절하면서 정확한 위치를 찾으세요 */
+}
