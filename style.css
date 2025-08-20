@@ -1415,5 +1415,5 @@ footer {
 #desc-ai-film,
 #desc-ai-webtoon,
 #desc-ai-cardnews {
-  margin-top: -50vh !important; /* ✅ 값 뒤에 !important 를 추가하세요 */
+  margin-top: -80vh !important; /* ✅ 값 뒤에 !important 를 추가하세요 */
 }
