@@ -1409,11 +1409,15 @@ footer {
   }
 }
 
-/* 이 코드를 style.css 파일의 맨 아래에 추가하세요 */
+/* style.css 파일 맨 아래의 기존 코드를 지우고, 이 코드로 교체하세요. */
 
 #desc-ai-video,
 #desc-ai-film,
 #desc-ai-webtoon,
 #desc-ai-cardnews {
-  margin-top: -100vh !important; /* ✅ 값 뒤에 !important 를 추가하세요 */
+  position: absolute !important;
+  top: 120px !important; /* 화면 상단에서의 거리. 이 값을 조절하세요. */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  margin-top: 0 !important; /* 기존 margin-top은 0으로 초기화합니다. */
 }
